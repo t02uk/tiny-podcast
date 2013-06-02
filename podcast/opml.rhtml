@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opml version="1.0">
+<head>
+    <title>debiFeeds</title>
+    <dateCreated><%= @rdf['header']['date_created'].rfc822 %></dateCreated>
+    <webMaster>X / _ / X</webMaster>
+</head>
+<body>
+    <outline title="debiFeeds">
+    <%- @rdf['items'].each do |item| -%>
+      <outline title="<%= item['title'] %>" type="rss" text="<%= item['url'] %>" xmlUrl="<%= item['url'] %>" />
+    <%- end -%>
+    </outline>
+</body>
+</opml>

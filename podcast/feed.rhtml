@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<rss version="2.0">
+<channel>
+<title><%= @rdf['header']['item_name'] %></title>
+<link><%= "#{BASE_URI}" %></link>
+    <description><%= @rdf['header']['item_name'] %></description>
+    <copyright>(c) XML Technology Certification Committee</copyright>
+    <lastBuildDate><%= @rdf['header']['last_date'].rfc822 %></lastBuildDate>
+    <managingEditor>X / _ / X@mail.example</managingEditor>
+    <webMaster>X / _ / X</webMaster>
+
+    <%- @rdf['items'].each do |item| -%>
+    <item>
+    <title><%= item['title'] %></title>
+    <link><%= "#{BASE_URI}/link/#{@rdf['header']['item_name']}/#{item['name_full']}" %></link>
+    <description><%= item['title'] %></description>
+    <guid><%= "#{BASE_URI}/link/#{@rdf['header']['item_name']}/#{item['name_full']}" %></guid>
+    <pubDate><%= item['date'].rfc822 %></pubDate>
+    <enclosure url="<%= "#{BASE_URI}/link/#{@rdf['header']['item_name']}/#{item['name_full']}" %>" length="<%= item['size'] %>" type="<%= item['type'] %>" />
+    </item>
+    <%- end -%>
+</channel>
+</rss>
